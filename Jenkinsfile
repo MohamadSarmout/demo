@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Install Docker and kubectl') {
             steps {
-                sh 'apt-get update'
+                // sh 'apt-get update'
                 sh 'apt-get install -y docker.io'
                 sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
                 sh 'chmod +x kubectl'
