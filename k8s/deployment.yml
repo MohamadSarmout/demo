@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-ctx-context
+  name: sample-ctx-context
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-ctx-context
+  template:
+    metadata:
+      labels:
+        app: sample-ctx-context
+    spec:
+      containers:
+        - image: tnexus/sample-ctx-jib
+          name: sample-ctx-context
