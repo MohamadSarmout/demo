@@ -5,12 +5,14 @@ build:
     envTemplate:
       template: latest
   artifacts:
-    - image: tnexus/sample-ctx-jib
-      jib:
-        project: com.example:demo
-        args:
-          - -Pskaffold_profile
-          - -Djib_property
+  - image: tnexus/sample-ctx-jib
+    jib:
+      project: com.example:demo
+      args:
+      - -Pskaffold_profile
+      - -Djib_property
+    platforms:
+    - linux/amd64 # Specify the desired platform here
 deploy:
   kubectl:
     manifests:
