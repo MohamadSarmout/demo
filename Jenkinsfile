@@ -22,7 +22,7 @@ pipeline {
         // stage('Install Docker and kubectl') {
         //     steps {
         //         sh 'curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && mv skaffold /usr/local/bin/'
-                
+        
         //     }
         // }
         stage('Install Skaffold') {
@@ -39,11 +39,11 @@ pipeline {
             }
         }
 
-        // stage('Build') {
-        //     steps {
-        //         sh 'mvn clean package'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
         // stage('Containerize') {
         //     steps {
         //         sh 'skaffold build --default-repo=localhost:5000'
