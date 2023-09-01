@@ -11,8 +11,6 @@ build:
         args:
           - -Pskaffold_profile
           - -Djib_property
-      platforms:
-        - linux/amd64 # Specify the desired platform here
 deploy:
   kubectl:
     manifests:
