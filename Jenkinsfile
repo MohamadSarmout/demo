@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools { 
         maven 'maven394' 
-        jdk 'java17' 
+        jdk 'jdk17' 
     }
     stages {
         // stage('Install Docker and kubectl') {
