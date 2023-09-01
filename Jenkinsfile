@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
+    }
     stages {
         // stage('Install Docker and kubectl') {
         //     steps {
@@ -13,6 +17,12 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+        stage('Install Docker and kubectl') {
+            steps {
+                sh 'curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && sudo mv skaffold /usr/local/bin/'
+                
             }
         }
         stage('Build') {
