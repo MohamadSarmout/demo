@@ -51,7 +51,10 @@ pipeline {
         // }
         stage('Deploy') {
             steps {
-                sh 'skaffold run --default-repo=localhost:5000'
+                sh '''
+                chmod +x mvnw
+                skaffold run --default-repo=localhost:5000
+                '''
             }
         }
     }
