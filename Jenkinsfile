@@ -19,12 +19,26 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Install Docker and kubectl') {
-            steps {
-                sh 'curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && mv skaffold /usr/local/bin/'
+        // stage('Install Docker and kubectl') {
+        //     steps {
+        //         sh 'curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && chmod +x skaffold && mv skaffold /usr/local/bin/'
                 
+        //     }
+        // }
+        stage('Install Skaffold') {
+            steps {
+                sh '''
+                mkdir -p ~/bin
+                curl -Lo ~/bin/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+                chmod +x ~/bin/skaffold
+                '''
+        // Add the custom bin directory to the PATH
+            script {
+                env.PATH = "${env.HOME}/bin:${env.PATH}"
+                }
             }
         }
+
         stage('Build') {
             steps {
                 sh 'mvn clean package'
