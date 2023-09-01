@@ -12,8 +12,7 @@ pipeline {
         // }
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-                    userRemoteConfigs: [[url: 'https://MohamadSarmout:jpfW0%Aklsf#gfEik@github.com/MohamadSarmout/https://github.com/MohamadSarmout/demo.git']]])
+                checkout scm
             }
         }
         stage('Build') {
